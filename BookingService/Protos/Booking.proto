@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "BookingService";
+
+package Booking;
+
+// The Booking service definition.
+service Booking {
+	rpc GetBookingById(BookingRequest) returns (BookingResponse);	
+	rpc GetListBookingStatusById (BookingRequest) returns (stream BookingStatusResponse) {}
+}
+
+message BookingRequest{
+	string Id = 1;
+}
+
+message BookingResponse{
+	string Id = 1;
+	string Description = 2;
+	int32 Quantity = 3;
+}
+
+message BookingStatusResponse {
+	string status = 1;
+}
